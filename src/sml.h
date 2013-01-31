@@ -257,7 +257,7 @@ public:
 	rotator		deNormalize() const;
 	void		makeShortestRoute();
 public:
-	static int	normalizeAxis(int angle);
+	 static int	normalizeAxis(int angle);
 };
 
 class globalMath
