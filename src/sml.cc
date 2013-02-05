@@ -493,6 +493,20 @@ void mat::setMirrorMat(const plane& p)
 		vec4( -2.f*p.x*p.w,			-2.f*p.y*p.w,		-2.f*p.z*p.w,		1.f ) );
 }
 
+void mat::setLookAtMat(const vec3& eye,const vec3& at,const vec3& up)
+{
+	vec3 zaxis = (at - eye).normalized();
+
+	vec3 xaxis = cross(up, zaxis).normalized();
+
+	vec3 yaxis = cross(zaxis, xaxis).normalized();
+
+	m[0][0] = xaxis.x;       m[0][1] = yaxis.x;       m[0][2] = zaxis.x;       m[0][3] = 0;
+	m[1][0] = xaxis.y;       m[1][1] = yaxis.y;       m[1][2] = zaxis.y;       m[1][3] = 0;
+	m[2][0] = xaxis.z;       m[2][1] = yaxis.z;       m[2][2] = zaxis.z;       m[2][3] = 0;
+	m[3][0] = -dot(xaxis, eye);  m[3][1] = -dot(yaxis, eye);  m[3][2] = -dot(zaxis, eye);  m[3][3] = 1;
+}
+
 //////////////////////////////////////////////////////////////////////////
 
 const quat quat::identity(0,0,0,1);

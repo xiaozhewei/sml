@@ -162,6 +162,7 @@ public:
 	void		setInverseRotationMat(const rotator& rot);
 	void		setAxisMat(const vec3& xaxis,const vec3& yaxis,const vec3& zaxis,const vec3& origin);
 	void		setMirrorMat(const plane& p);
+	void		setLookAtMat(const vec3& eye,const vec3& at,const vec3& up);
 };
 
 class quat 
